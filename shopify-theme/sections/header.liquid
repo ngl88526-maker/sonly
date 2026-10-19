@@ -1,24 +1,6 @@
 {% assign featured = settings.featured_product | default: all_products['mystic-clouds'] %}
 {% assign shop_link = featured.url | default: routes.all_products_collection_url %}
-{% if section.settings.show_announcement and section.settings.announcement != blank %}<div class="announcement simple-announcement"><span>{{ section.settings.announcement | escape }}</span></div>{% endif %}
-<header class="header">
-  <a class="wordmark brand-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }} home">{% render 'brand-logo' %}</a>
-  <nav aria-label="Main navigation">
-    {% if section.settings.menu != blank %}
-      {% for link in section.settings.menu.links %}<a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>{% endfor %}
-    {% else %}
-      <a href="{{ shop_link }}">Shop</a><a href="{{ routes.root_url }}pages/help">Help</a>
-    {% endif %}
-  </nav>
-  <div class="header-actions">
-    <a class="bag-button" href="{{ routes.cart_url }}">Bag <span>{{ cart.item_count }}</span></a>
-    <button class="mobile-menu" type="button" data-menu-toggle aria-expanded="false" aria-controls="MobileNav">Menu</button>
-  </div>
-</header>
-<nav id="MobileNav" class="mobile-nav" aria-label="Mobile navigation" hidden>
-  {% if section.settings.menu != blank %}{% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% else %}<a href="{{ shop_link }}">Shop</a><a href="{{ routes.root_url }}pages/size-care">Size guide</a><a href="{{ routes.root_url }}pages/help">Help</a>{% endif %}
-  {% if shop.customer_accounts_enabled %}<a href="{{ routes.account_url }}">Your account</a>{% endif %}
-</nav>
-{% schema %}
-{"name":"Header","settings":[{"type":"checkbox","id":"show_announcement","label":"Show announcement","default":false},{"type":"text","id":"announcement","label":"Announcement","default":"GOOD SOCKS. BETTER DAYS."},{"type":"link_list","id":"menu","label":"Navigation menu"}]}
-{% endschema %}
+{% if section.settings.show_announcement and section.settings.announcement != blank %}<div class="studio-announcement">{{ section.settings.announcement | escape }}</div>{% endif %}
+<header class="header studio-header"><a class="brand-logo" href="{{ routes.root_url }}" aria-label="Sock Only home">{% render 'brand-logo' %}</a><nav class="studio-nav" aria-label="Main navigation">{% if section.settings.menu != blank %}{% for link in section.settings.menu.links %}<a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>{% endfor %}{% else %}<a href="{{ shop_link }}">The socks</a><a href="{{ routes.root_url }}pages/our-story">Our story</a><a href="{{ routes.root_url }}pages/help">Help</a>{% endif %}</nav><div class="header-actions"><a class="studio-bag" href="{{ routes.cart_url }}" aria-label="Shopping bag, {{ cart.item_count }} items">{% render 'studio-icon', name: 'bag' %}<span class="bag-label">Bag</span><span class="bag-count">{{ cart.item_count }}</span></a><button class="mobile-menu" type="button" data-menu-toggle aria-expanded="false" aria-controls="MobileNav">Menu</button></div></header>
+<nav id="MobileNav" class="mobile-nav" aria-label="Mobile navigation" hidden>{% if section.settings.menu != blank %}{% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% else %}<a href="{{ shop_link }}">The socks</a><a href="{{ routes.root_url }}pages/our-story">Our story</a><a href="{{ routes.root_url }}pages/size-care">Size & care</a><a href="{{ routes.root_url }}pages/help">Help</a>{% endif %}</nav>
+{% schema %}{"name":"Header","settings":[{"type":"checkbox","id":"show_announcement","label":"Show announcement","default":true},{"type":"text","id":"announcement","label":"Announcement","default":"SMALL RUNS. BIG PERSONALITY. SOCKS ONLY."},{"type":"link_list","id":"menu","label":"Navigation menu"}]}{% endschema %}

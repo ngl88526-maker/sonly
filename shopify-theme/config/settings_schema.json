@@ -2,7 +2,7 @@
   {
     "name": "theme_info",
     "theme_name": "SockOnly",
-    "theme_version": "1.3.0",
+    "theme_version": "2.0.0",
     "theme_author": "SockOnly",
     "theme_documentation_url": "https://help.shopify.com/en/manual/online-store/themes",
     "theme_support_url": "https://help.shopify.com/"
@@ -47,7 +47,7 @@
         "type": "font_picker",
         "id": "heading_font",
         "label": "Headings",
-        "default": "dm_sans_n6"
+        "default": "dm_sans_n7"
       },
       {
         "type": "font_picker",
@@ -74,7 +74,7 @@
         "max": 240,
         "step": 10,
         "unit": "px",
-        "default": 160
+        "default": 130
       },
       {
         "type": "range",
@@ -84,7 +84,7 @@
         "max": 140,
         "step": 10,
         "unit": "px",
-        "default": 110
+        "default": 100
       }
     ]
   }

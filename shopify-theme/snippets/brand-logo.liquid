@@ -1,5 +1,5 @@
 {% if settings.logo != blank %}
-  {{ settings.logo | image_url: width: 600 | image_tag: widths: '160,240,320,480,600', sizes: '(max-width: 760px) 120px, 180px', loading: 'eager', class: 'brand-logo-image', alt: shop.name }}
+  {{ settings.logo | image_url: width: 600 | image_tag: widths: '160,240,320,480,600', sizes: '(max-width: 760px) 110px, 150px', loading: 'eager', class: 'brand-logo-image', alt: shop.name }}
 {% else %}
-  <span class="brand-logo-fallback">sockonly</span>
+  <img class="brand-logo-image" src="{{ 'sock-only-logo.webp' | asset_url }}" width="600" height="358" alt="Sock Only" loading="eager">
 {% endif %}

@@ -1,5 +1,9 @@
 # Upload the SockOnly Shopify design
 
+**Current release: Sock Only Studio v2.0.0.** The design now uses the supplied logo’s sky-blue/black direction, with a bundled transparent logo adaptation, background-cleaned product mockup, stronger typography and one focused purchase area. [View the desktop/mobile design previews](design-preview/README.md).
+
+Upload `dist/sockonly-shopify-theme.zip` as a **new unpublished theme**. Select Mystic Clouds in Theme settings → Storefront. The logo appears by default; Theme settings → Brand logo lets you replace it with original artwork. The Product section’s **Product presentation image** overrides the bundled cutout. Reapply your menu, copy and review-app blocks, then test cart/checkout before publishing.
+
 The Shopify-native Online Store 2.0 theme is in `shopify-theme/`. The uploadable archive is `dist/sockonly-shopify-theme.zip`. This preserves the cream/navy/coral/lilac design and supplied product mockup while replacing the custom Node backend with Shopify-native forms, cart, accounts, customer signup and hosted checkout.
 
 **For this Shopify-hosted route you do not need the Headless channel, a Storefront API token, Node hosting, SQLite or Resend.** The earlier SHOPIFY-SETUP.md describes the separate custom-app route. Choose the theme route below to host the site entirely on Shopify.
@@ -71,7 +75,7 @@ Upload this ZIP as a new unpublished theme. Reapply the selected product/menu, a
 
 In **Online Store → Themes → Edit theme / Customize → Theme settings → Brand logo**, choose **Logo → Select image → Upload** and select your original logo file. This single setting updates the header, footer and password page. Set desktop/mobile widths there. The image keeps its original proportions; a light footer panel keeps the logo’s black lettering visible. Use the original PNG/WebP if possible; a transparent original avoids a white rectangular background.
 
-The logo shown inline in chat was not provided as an accessible workspace file, so its image bytes are **not bundled in the ZIP**. The theme includes the upload controls and falls back to the text wordmark until you select the actual logo. A new theme upload does not copy a logo selected in another theme.
+This described v1.1.1. In v2.0.0 a transparent adaptation prepared from the supplied logo is **bundled and shown by default**. Uploading original production artwork still takes precedence, and a new theme upload does not copy a logo selected in another theme.
 
 ## Version 1.2: simplified purchase-first design
 
@@ -86,3 +90,12 @@ The cart now keeps the primary Checkout action prominent, collapses optional ord
 ## Version 1.3: apply the supplied conversion recommendations
 
 See CRO-ACTION-PLAN.md for the 14-point mapping. Product sections now expose a **Short product promise**, optional **Confirmed shipping summary** and **Confirmed returns summary**, plus a real rating summary from Shopify's standard review metafields. Blank policy summaries and absent ratings stay hidden. No new homepage sections or popups were added. Configure actual guest checkout, wallets, recovery automations and analytics in Shopify; the theme does not activate them. Upload as an unpublished theme and reapply the chosen product/logo/menu before testing.
+
+
+## Version 2.0: Sock Only Studio
+
+The current visual system is sky blue `#64BDF9`, pale blue `#DFF1FD`, ink `#111110` and warm white `#FFFEFA`, with a small yellow product sticker. The homepage pairs a bold brand headline with product price, fit access, quantity and one Add to bag button; product details and gifting remain collapsed. The product page prioritizes the standard image-and-purchase layout. Navigation, product benefits, checkout disclosures and the footer use one consistent visual language.
+
+The logo and mockup backgrounds were cleaned using the image tool from the supplied references, then exported as responsive WebP assets. They are source-derived presentation adaptations, not pixel-identical original files. Preserve the original artwork and verify these assets against production before public launch; upload approved originals through the theme editor when available.
+
+Local validation covered actual theme markup rendered with Shopify fixture data at 320, 390, 768, 1024 and 1440px, loaded imagery, one purchase CTA, mobile navigation, quantity/gift-property submission, back-navigation recovery and sold-out disabling. Shopify Theme Check reported 38 files with no offenses. This does not validate live provider behavior or certify conversion lift.

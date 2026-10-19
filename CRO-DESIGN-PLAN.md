@@ -1,5 +1,9 @@
 # SockOnly: limited-run socks, direct-sales design plan
 
+## Current visual execution: Studio v2
+
+The latest implementation keeps the single-product purchase path while adding brand character: a bundled transparent adaptation of the owner’s logo, sky-blue/black/white palette, bold headline, transparent product presentation, clear price, fit link and one Add to bag action. See design-preview/README.md for local desktop/mobile previews. The policy, customer-research, genuine-review and measurement recommendations in CRO-ACTION-PLAN.md still apply. Source-derived image assets require production review; price, stock and checkout remain Shopify-controlled. The earlier layouts below describe prior versions.
+
 ## Current direction: v1.2, simplified
 
 The owner requested a quieter site. This supersedes the long homepage sequence below: the homepage now uses the product purchase section directly. One large image, real price, short benefit statement, size-guide link, simple quantity selector and one Add to bag action lead the page. Secondary photography follows the purchase section. Gift options and product details are collapsed; shipping/returns remain easy to find. The announcement, decorative homepage sections, duplicate mobile purchase bar and large newsletter sections are removed from the default purchase path. Navigation defaults to Shop and Help. Email signup is an optional footer disclosure. Low-stock counts default to off. The goal is less decision overhead; actual conversion impact must be measured after launch.
