@@ -66,3 +66,9 @@ A connected Shopify store is required to verify actual Liquid rendering, app blo
 See [CRO-DESIGN-PLAN.md](CRO-DESIGN-PLAN.md) for the section plan, PDP rationale, palette/fonts, mobile patterns and trust checklist. The homepage now has reorderable current-drop, craft, review-app, gifting and FAQ sections. Genuine tracked low-stock counts are controlled in Theme settings → Storefront; heading/body fonts in Typography. Product quantity uses accessible 1/2/3-pair choices and a mobile purchase bar connected to the same form.
 
 Upload this ZIP as a new unpublished theme. Reapply the selected product/menu, approved content and app blocks from your existing theme, then test before publishing. The upload does not migrate prior theme-editor customizations or activate reviews, payment methods, discounts or marketing automations.
+
+## Your Sock Only logo (v1.1.1)
+
+In **Online Store → Themes → Edit theme / Customize → Theme settings → Brand logo**, choose **Logo → Select image → Upload** and select your original logo file. This single setting updates the header, footer and password page. Set desktop/mobile widths there. The image keeps its original proportions; a light footer panel keeps the logo’s black lettering visible. Use the original PNG/WebP if possible; a transparent original avoids a white rectangular background.
+
+The logo shown inline in chat was not provided as an accessible workspace file, so its image bytes are **not bundled in the ZIP**. The theme includes the upload controls and falls back to the text wordmark until you select the actual logo. A new theme upload does not copy a logo selected in another theme.

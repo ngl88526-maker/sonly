@@ -2,7 +2,7 @@
   {
     "name": "theme_info",
     "theme_name": "SockOnly",
-    "theme_version": "1.1.0",
+    "theme_version": "1.1.1",
     "theme_author": "SockOnly",
     "theme_documentation_url": "https://help.shopify.com/en/manual/online-store/themes",
     "theme_support_url": "https://help.shopify.com/"
@@ -54,6 +54,37 @@
         "id": "body_font",
         "label": "Body text",
         "default": "inter_n4"
+      }
+    ]
+  },
+  {
+    "name": "Brand logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo",
+        "info": "Upload your original Sock Only logo. The same image is used in the header, footer and password page."
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "label": "Desktop logo width",
+        "min": 120,
+        "max": 240,
+        "step": 10,
+        "unit": "px",
+        "default": 160
+      },
+      {
+        "type": "range",
+        "id": "mobile_logo_width",
+        "label": "Mobile logo width",
+        "min": 80,
+        "max": 140,
+        "step": 10,
+        "unit": "px",
+        "default": 110
       }
     ]
   }

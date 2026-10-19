@@ -15,7 +15,7 @@
   {% style %}
     {{ settings.heading_font | font_face: font_display: 'swap' }}
     {{ settings.body_font | font_face: font_display: 'swap' }}
-    :root { --heading: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }}; }
+    :root { --logo-width: {{ settings.logo_width | default: 160 }}px; --mobile-logo-width: {{ settings.mobile_logo_width | default: 110 }}px; --heading: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }}; }
     body { font-family: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }}; }
   {% endstyle %}
   <script src="{{ 'theme.js' | asset_url }}" defer></script>
