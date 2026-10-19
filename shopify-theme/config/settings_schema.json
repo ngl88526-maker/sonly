@@ -2,7 +2,7 @@
   {
     "name": "theme_info",
     "theme_name": "SockOnly",
-    "theme_version": "1.1.1",
+    "theme_version": "1.2.0",
     "theme_author": "SockOnly",
     "theme_documentation_url": "https://help.shopify.com/en/manual/online-store/themes",
     "theme_support_url": "https://help.shopify.com/"
@@ -26,7 +26,7 @@
         "type": "checkbox",
         "id": "show_stock_count",
         "label": "Show genuine low-stock quantities",
-        "default": true,
+        "default": false,
         "info": "Only shows tracked inventory with overselling disabled. No countdown timers."
       },
       {

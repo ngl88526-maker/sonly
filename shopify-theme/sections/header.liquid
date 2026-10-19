@@ -1,25 +1,24 @@
 {% assign featured = settings.featured_product | default: all_products['mystic-clouds'] %}
 {% assign shop_link = featured.url | default: routes.all_products_collection_url %}
-<div class="announcement"><span>{{ section.settings.announcement | escape }}</span><span>Socks. Only socks. Obsessively.</span></div>
+{% if section.settings.show_announcement and section.settings.announcement != blank %}<div class="announcement simple-announcement"><span>{{ section.settings.announcement | escape }}</span></div>{% endif %}
 <header class="header">
   <a class="wordmark brand-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }} home">{% render 'brand-logo' %}</a>
   <nav aria-label="Main navigation">
     {% if section.settings.menu != blank %}
       {% for link in section.settings.menu.links %}<a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>{% endfor %}
     {% else %}
-      <a href="{{ shop_link }}">The socks</a><a href="{{ routes.root_url }}pages/our-story">Our story</a><a href="{{ routes.root_url }}pages/size-care">Size & care</a><a href="{{ shop_link }}#gifting">Gifting</a>
+      <a href="{{ shop_link }}">Shop</a><a href="{{ routes.root_url }}pages/help">Help</a>
     {% endif %}
   </nav>
   <div class="header-actions">
-    {% if shop.customer_accounts_enabled %}<a class="account-link" href="{{ routes.account_url }}" aria-label="Your account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg></a>{% endif %}
     <a class="bag-button" href="{{ routes.cart_url }}">Bag <span>{{ cart.item_count }}</span></a>
     <button class="mobile-menu" type="button" data-menu-toggle aria-expanded="false" aria-controls="MobileNav">Menu</button>
   </div>
 </header>
 <nav id="MobileNav" class="mobile-nav" aria-label="Mobile navigation" hidden>
-  {% if section.settings.menu != blank %}{% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% else %}<a href="{{ shop_link }}">The socks</a><a href="{{ routes.root_url }}pages/our-story">Our story</a><a href="{{ routes.root_url }}pages/size-care">Size & care</a><a href="{{ routes.root_url }}pages/help">Help</a>{% endif %}
+  {% if section.settings.menu != blank %}{% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% else %}<a href="{{ shop_link }}">Shop</a><a href="{{ routes.root_url }}pages/size-care">Size guide</a><a href="{{ routes.root_url }}pages/help">Help</a>{% endif %}
   {% if shop.customer_accounts_enabled %}<a href="{{ routes.account_url }}">Your account</a>{% endif %}
 </nav>
 {% schema %}
-{"name":"Header","settings":[{"type":"text","id":"announcement","label":"Announcement","default":"GOOD SOCKS. BETTER DAYS."},{"type":"link_list","id":"menu","label":"Navigation menu"}]}
+{"name":"Header","settings":[{"type":"checkbox","id":"show_announcement","label":"Show announcement","default":false},{"type":"text","id":"announcement","label":"Announcement","default":"GOOD SOCKS. BETTER DAYS."},{"type":"link_list","id":"menu","label":"Navigation menu"}]}
 {% endschema %}

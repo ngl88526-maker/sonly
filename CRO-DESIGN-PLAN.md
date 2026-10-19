@@ -1,5 +1,11 @@
 # SockOnly: limited-run socks, direct-sales design plan
 
+## Current direction: v1.2, simplified
+
+The owner requested a quieter site. This supersedes the long homepage sequence below: the homepage now uses the product purchase section directly. One large image, real price, short benefit statement, size-guide link, simple quantity selector and one Add to bag action lead the page. Secondary photography follows the purchase section. Gift options and product details are collapsed; shipping/returns remain easy to find. The announcement, decorative homepage sections, duplicate mobile purchase bar and large newsletter sections are removed from the default purchase path. Navigation defaults to Shop and Help. Email signup is an optional footer disclosure. Low-stock counts default to off. The goal is less decision overhead; actual conversion impact must be measured after launch.
+
+The original v1.1 recommendations below remain historical context and optional sections, not the current default layout.
+
 Theme version 1.1. The goal is a completed order, with the current drop as the primary path. Recommendations below distinguish what the theme implements from merchant configuration and future experiments. Conversion improvements are hypotheses until measured; no uplift is promised.
 
 ## 1. Homepage, hero to footer

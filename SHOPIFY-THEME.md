@@ -72,3 +72,9 @@ Upload this ZIP as a new unpublished theme. Reapply the selected product/menu, a
 In **Online Store → Themes → Edit theme / Customize → Theme settings → Brand logo**, choose **Logo → Select image → Upload** and select your original logo file. This single setting updates the header, footer and password page. Set desktop/mobile widths there. The image keeps its original proportions; a light footer panel keeps the logo’s black lettering visible. Use the original PNG/WebP if possible; a transparent original avoids a white rectangular background.
 
 The logo shown inline in chat was not provided as an accessible workspace file, so its image bytes are **not bundled in the ZIP**. The theme includes the upload controls and falls back to the text wordmark until you select the actual logo. A new theme upload does not copy a logo selected in another theme.
+
+## Version 1.2: simplified purchase-first design
+
+The default homepage now goes directly to the selected product: photo, price, short benefit statement, fit guidance, quantity and one Add to bag button. Extra gallery images follow the purchase section. Gift fields and product details are collapsed. Navigation defaults to Shop and Help. The announcement bar and low-stock counts default to off; no fixed duplicate purchase bar or large newsletter appears. A compact footer holds support/policy links and optional email signup. Older decorative sections remain available in the editor but are not in the default homepage.
+
+Upload as a new unpublished theme to use the new default homepage. An existing custom navigation menu can still show extra links: select a two-link Shop/Help menu or clear the Header menu setting. Select your featured product and logo, confirm fit/care copy, and test the real cart/checkout before publishing.
