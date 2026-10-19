@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "home"
+    },
+    "newsletter": {
+      "type": "newsletter"
+    }
+  },
+  "order": [
+    "main",
+    "newsletter"
+  ]
+}

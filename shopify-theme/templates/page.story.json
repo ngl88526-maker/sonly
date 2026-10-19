@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "story"
+    },
+    "newsletter": {
+      "type": "newsletter"
+    }
+  },
+  "order": [
+    "main",
+    "newsletter"
+  ]
+}

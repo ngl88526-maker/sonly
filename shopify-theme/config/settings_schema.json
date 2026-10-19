@@ -1,0 +1,27 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "SockOnly",
+    "theme_version": "1.0.0",
+    "theme_author": "SockOnly",
+    "theme_documentation_url": "https://help.shopify.com/en/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com/"
+  },
+  {
+    "name": "Storefront",
+    "settings": [
+      {
+        "type": "product",
+        "id": "featured_product",
+        "label": "Featured product",
+        "info": "Select Mystic Clouds. Publish it to the Online Store channel."
+      },
+      {
+        "type": "product",
+        "id": "gift_wrap_product",
+        "label": "Gift wrap product",
+        "info": "Optional. Select a gift-wrap product with one variant, published to Online Store."
+      }
+    ]
+  }
+]

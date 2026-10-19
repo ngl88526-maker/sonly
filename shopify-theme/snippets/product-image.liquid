@@ -1,0 +1,9 @@
+{% if image != blank %}
+  {% if eager %}
+    {{ image | image_url: width: 1400 | image_tag: widths: '480,900,1400', sizes: '(max-width: 760px) 100vw, 55vw', loading: 'eager', fetchpriority: 'high', class: class_name }}
+  {% else %}
+    {{ image | image_url: width: 1400 | image_tag: widths: '480,900,1400', sizes: '(max-width: 760px) 100vw, 55vw', loading: 'lazy', class: class_name }}
+  {% endif %}
+{% else %}
+  <img src="{{ 'mystic-clouds-900.webp' | asset_url }}" srcset="{{ 'mystic-clouds-480.webp' | asset_url }} 480w, {{ 'mystic-clouds-900.webp' | asset_url }} 900w, {{ 'mystic-clouds-1400.webp' | asset_url }} 1400w" sizes="(max-width: 760px) 100vw, 55vw" width="1400" height="1400" class="{{ class_name }}" alt="Mystic Clouds cloud-pattern crew socks in navy, smoke blue, coral and lilac; supplied product mockup" loading="{% if eager %}eager{% else %}lazy{% endif %}">
+{% endif %}

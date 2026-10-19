@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "size-care"
+    },
+    "newsletter": {
+      "type": "newsletter"
+    }
+  },
+  "order": [
+    "main",
+    "newsletter"
+  ]
+}

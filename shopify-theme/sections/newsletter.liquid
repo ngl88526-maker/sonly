@@ -1,0 +1,11 @@
+<section class="newsletter section-pad" id="newsletter"><div><span class="eyebrow">GOOD THINGS COME IN PAIRS. AND EMAILS.</span><h2>Be first.<br>Stay in the loop.</h2><p>{{ section.settings.description | escape }}</p></div>
+{% form 'customer', id: 'NewsletterForm' %}
+  <input type="hidden" name="contact[tags]" value="newsletter,sockonly">
+  <label for="NewsletterEmail">Your email address</label><div class="email-line"><input type="email" id="NewsletterEmail" name="contact[email]" autocomplete="email" required placeholder="you@somewhere.com" {% if form.errors %}aria-invalid="true" aria-describedby="NewsletterErrors"{% endif %}><button type="submit" aria-label="Join the email list">{% render 'arrow' %}</button></div>
+  <label class="check"><input type="checkbox" required name="contact[accepts_marketing]" value="true"> I agree to receive SockOnly product emails. Unsubscribe anytime.</label>
+  {% if form.posted_successfully? %}<p role="status">Thanks for signing up. Look out for a confirmation email if required.</p>{% endif %}
+  {% if form.errors %}<div id="NewsletterErrors" role="alert">{{ form.errors | default_errors }}</div>{% endif %}
+  {% if shop.privacy_policy != blank %}<p class="fine">Read our <a href="{{ shop.privacy_policy.url }}">privacy policy</a>.</p>{% endif %}
+{% endform %}
+</section>
+{% schema %}{"name":"Newsletter","settings":[{"type":"textarea","id":"description","label":"Description","default":"New styles, little surprises, and just the good stuff. Stay in the loop."}],"presets":[{"name":"Newsletter"}]}{% endschema %}
