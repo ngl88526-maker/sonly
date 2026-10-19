@@ -1,0 +1,5 @@
+{% assign featured = settings.featured_product | default: all_products['mystic-clouds'] %}
+{% assign product_link = featured.url | default: routes.all_products_collection_url %}
+<section class="gift-banner section-pad"><div class="gift-graphic" aria-hidden="true"><span>GOOD<br>SOCKS.</span><i>FOR GOOD PEOPLE.</i><div class="ribbon"></div></div><div><span class="eyebrow">GIVE A LITTLE CLOUD NINE.</span><h2>Great taste.<br>Easy gifting.</h2><p>For your favorite person. Or your other favorite person. Add a personal note and make their day.</p><a class="button navy" href="{{ product_link }}#gifting">Find a feel-good gift {% render 'arrow' %}</a></div></section>
+
+{% schema %}{"name": "Gifting", "settings": [], "presets": [{"name": "Gifting"}]}{% endschema %}

@@ -1,0 +1,2 @@
+{% if section.blocks.size > 0 %}<section class="section-pad customer-reviews"><span class="eyebrow">FROM THEIR SOCK DRAWERS TO YOURS.</span><h2>{{ section.settings.heading | escape }}</h2>{% for block in section.blocks %}{% render block %}{% endfor %}</section>{% endif %}
+{% schema %}{"name":"Customer reviews","settings":[{"type":"text","id":"heading","label":"Heading","default":"Good socks. Real opinions."}],"blocks":[{"type":"@app"}],"presets":[{"name":"Customer reviews"}]}{% endschema %}

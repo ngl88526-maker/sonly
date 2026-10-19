@@ -12,6 +12,12 @@
   {{ content_for_header }}
   {{ 'sockonly.css' | asset_url | stylesheet_tag }}
   {{ 'theme.css' | asset_url | stylesheet_tag }}
+  {% style %}
+    {{ settings.heading_font | font_face: font_display: 'swap' }}
+    {{ settings.body_font | font_face: font_display: 'swap' }}
+    :root { --heading: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }}; }
+    body { font-family: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }}; }
+  {% endstyle %}
   <script src="{{ 'theme.js' | asset_url }}" defer></script>
 </head>
 <body>

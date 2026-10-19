@@ -60,3 +60,9 @@ npm exec --cache /tmp/sockonly-npm-cache --yes --package @shopify/cli -- shopify
 ```
 
 A connected Shopify store is required to verify actual Liquid rendering, app blocks, customer forms and checkout. No Shopify store was connected or changed during local theme creation.
+
+## Version 1.1: limited-run sales layout
+
+See [CRO-DESIGN-PLAN.md](CRO-DESIGN-PLAN.md) for the section plan, PDP rationale, palette/fonts, mobile patterns and trust checklist. The homepage now has reorderable current-drop, craft, review-app, gifting and FAQ sections. Genuine tracked low-stock counts are controlled in Theme settings → Storefront; heading/body fonts in Typography. Product quantity uses accessible 1/2/3-pair choices and a mobile purchase bar connected to the same form.
+
+Upload this ZIP as a new unpublished theme. Reapply the selected product/menu, approved content and app blocks from your existing theme, then test before publishing. The upload does not migrate prior theme-editor customizations or activate reviews, payment methods, discounts or marketing automations.

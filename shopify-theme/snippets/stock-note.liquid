@@ -1,0 +1,7 @@
+{% if variant.available %}
+  {% if settings.show_stock_count and variant.inventory_management != blank and variant.inventory_policy == 'deny' and variant.inventory_quantity > 0 and variant.inventory_quantity <= settings.low_stock_threshold %}
+    <p class="stock-note" role="status">{{ variant.inventory_quantity }} {% if variant.inventory_quantity == 1 %}pair{% else %}pairs{% endif %} available in this drop.</p>
+  {% endif %}
+{% else %}
+  <p class="stock-note sold-out" role="status">This drop is sold out. <a href="{{ routes.root_url }}#newsletter">Hear about the next one.</a></p>
+{% endif %}

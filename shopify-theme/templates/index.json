@@ -5,10 +5,66 @@
     },
     "newsletter": {
       "type": "newsletter"
+    },
+    "drop": {
+      "type": "featured-drop"
+    },
+    "craft": {
+      "type": "craft"
+    },
+    "gifting": {
+      "type": "gifting"
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "How do I find my fit?",
+            "answer": "<p>Mystic Clouds has one size. Check our Size & Care guide and compare the flat measurements with a sock that fits you well.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Where can I see shipping costs?",
+            "answer": "<p>Available shipping services and rates are shown at checkout before payment. Find the store\u2019s shipping policy in the footer or contact us for help.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Can I send socks as a gift?",
+            "answer": "<p>Yes. Add a personal message on the product page and request hidden packing-slip prices. Gift wrap appears in the bag when available.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "What if a drop sells out?",
+            "answer": "<p>Join the email list to hear about upcoming styles. We will announce any restock plans when confirmed.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ]
+    },
+    "reviews": {
+      "type": "reviews"
     }
   },
   "order": [
     "main",
+    "drop",
+    "craft",
+    "reviews",
+    "gifting",
+    "faq",
     "newsletter"
   ]
 }
