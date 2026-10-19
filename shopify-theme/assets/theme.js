@@ -1,4 +1,8 @@
 function initializeTheme(root = document) {
+  root.querySelectorAll('[data-form-result]').forEach(result => {
+    const disclosure = result.closest('details');
+    if (disclosure) disclosure.open = true;
+  });
   root.querySelectorAll('[data-menu-toggle]').forEach(button => {
     if (button.dataset.bound) return;
     button.dataset.bound = 'true';

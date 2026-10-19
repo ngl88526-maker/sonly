@@ -78,3 +78,7 @@ The logo shown inline in chat was not provided as an accessible workspace file, 
 The default homepage now goes directly to the selected product: photo, price, short benefit statement, fit guidance, quantity and one Add to bag button. Extra gallery images follow the purchase section. Gift fields and product details are collapsed. Navigation defaults to Shop and Help. The announcement bar and low-stock counts default to off; no fixed duplicate purchase bar or large newsletter appears. A compact footer holds support/policy links and optional email signup. Older decorative sections remain available in the editor but are not in the default homepage.
 
 Upload as a new unpublished theme to use the new default homepage. An existing custom navigation menu can still show extra links: select a two-link Shop/Help menu or clear the Header menu setting. Select your featured product and logo, confirm fit/care copy, and test the real cart/checkout before publishing.
+
+## Version 1.2.1: cart clarity and form feedback
+
+The cart now keeps the primary Checkout action prominent, collapses optional order notes/gift wrap, and links configured shipping/returns policies near the total. Empty-cart shoppers return to the featured product. Newsletter success/errors automatically reveal the signup disclosure. See CRO-REFERENCES.md for the requested reference URLs and their currently blocked retrieval status; this update does not claim to implement unread source-specific recommendations.
