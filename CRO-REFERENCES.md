@@ -1,5 +1,9 @@
 # Requested CRO references and implementation status
 
+## Update: owner supplied the article excerpt
+
+The owner subsequently supplied the full 14-point conversion excerpt in an uploaded text file. It has now been read and used for theme v1.3. See [CRO-ACTION-PLAN.md](CRO-ACTION-PLAN.md) for the recommendation-by-recommendation mapping, implementation, merchant settings and testing plan. The original linked pages remain unverified; the Mastercard content has not been supplied. The earlier blocked-retrieval notes below describe the previous task.
+
 ## References supplied by the owner
 
 - Shopify: https://www.shopify.com/enterprise/blog/how-to-increase-conversion-rate

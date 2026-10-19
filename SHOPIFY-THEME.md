@@ -82,3 +82,7 @@ Upload as a new unpublished theme to use the new default homepage. An existing c
 ## Version 1.2.1: cart clarity and form feedback
 
 The cart now keeps the primary Checkout action prominent, collapses optional order notes/gift wrap, and links configured shipping/returns policies near the total. Empty-cart shoppers return to the featured product. Newsletter success/errors automatically reveal the signup disclosure. See CRO-REFERENCES.md for the requested reference URLs and their currently blocked retrieval status; this update does not claim to implement unread source-specific recommendations.
+
+## Version 1.3: apply the supplied conversion recommendations
+
+See CRO-ACTION-PLAN.md for the 14-point mapping. Product sections now expose a **Short product promise**, optional **Confirmed shipping summary** and **Confirmed returns summary**, plus a real rating summary from Shopify's standard review metafields. Blank policy summaries and absent ratings stay hidden. No new homepage sections or popups were added. Configure actual guest checkout, wallets, recovery automations and analytics in Shopify; the theme does not activate them. Upload as an unpublished theme and reapply the chosen product/logo/menu before testing.

@@ -1,0 +1,5 @@
+{% assign rating = product.metafields.reviews.rating.value %}
+{% assign count = product.metafields.reviews.rating_count.value | default: 0 | plus: 0 %}
+{% if show_rating and rating != blank and count > 0 and rating.scale_max > 0 %}
+  <p class="review-summary"><strong>{{ rating.rating | round: 1 }}/{{ rating.scale_max | round: 1 }}</strong> · {{ count }} customer {% if count == 1 %}review{% else %}reviews{% endif %}</p>
+{% endif %}

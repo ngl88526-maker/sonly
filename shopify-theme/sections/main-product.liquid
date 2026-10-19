@@ -3,7 +3,7 @@
 {% assign variant = product.selected_or_first_available_variant %}
 {% assign product_form_id = 'ProductForm-' | append: section.id %}
 <section class="product-layout section-pad"><div class="product-gallery"><div class="product-image">{% render 'product-image', image: product.featured_image, eager: true %}</div></div>
-<div class="product-info"><span class="eyebrow">LIMITED-RUN SOCKS</span><h1>{{ product.title | escape }}</h1><div class="product-price"><span class="live-price" data-price-display>{{ variant.price | money }}</span> <span>/ pair</span></div><div data-stock-note>{% render 'stock-note', variant: variant %}</div><p class="simple-summary">Cloud-inspired crew socks. Soft combed cotton. A seamless toe.</p><div class="simple-fit"><strong>One size</strong><a href="{{ routes.root_url }}pages/size-care">Size guide</a></div><p class="fine fit-disclosure">{{ section.settings.fit_note | escape }}</p>
+<div class="product-info"><span class="eyebrow">LIMITED-RUN SOCKS</span><h1>{{ product.title | escape }}</h1><div class="product-price"><span class="live-price" data-price-display>{{ variant.price | money }}</span> <span>/ pair</span></div><div data-stock-note>{% render 'stock-note', variant: variant %}</div>{% render 'review-summary', product: product, show_rating: section.settings.show_rating %}<p class="simple-summary">{{ section.settings.summary | escape }}</p><div class="simple-fit"><strong>One size</strong><a href="{{ routes.root_url }}pages/size-care">Size guide</a></div><p class="fine fit-disclosure">{{ section.settings.fit_note | escape }}</p>
 {% form 'product', product, id: product_form_id, class: 'purchase-form' %}
   {{ form.errors | default_errors }}
   {% if product.variants.size == 1 %}<input type="hidden" name="id" value="{{ variant.id }}" data-variant data-price="{{ variant.price | money | escape }}" data-available="{{ variant.available }}">{% else %}<label for="Variant">Choose an option</label><select name="id" id="Variant" data-variant>{% for item in product.variants %}<option data-price="{{ item.price | money | escape }}" data-available="{{ item.available }}" value="{{ item.id }}" {% if item == variant %}selected{% endif %} {% unless item.available %}disabled{% endunless %}>{{ item.title | escape }} — {{ item.price | money }}{% unless item.available %} — Sold out{% endunless %}</option>{% endfor %}</select>{% endif %}
@@ -13,12 +13,67 @@
 </details>
 {% endform %}
 <div class="simple-reassurance"><span>Secure checkout</span><a href="{{ routes.root_url }}pages/help">Shipping & returns</a></div>
+{% if section.settings.shipping_note != blank or section.settings.returns_note != blank %}<div class="purchase-policy-note">{% if section.settings.shipping_note != blank %}<p>{{ section.settings.shipping_note | escape }} {% if shop.shipping_policy.body != blank %}<a href="{{ shop.shipping_policy.url }}">Shipping details</a>{% endif %}</p>{% endif %}{% if section.settings.returns_note != blank %}<p>{{ section.settings.returns_note | escape }} {% if shop.refund_policy.body != blank %}<a href="{{ shop.refund_policy.url }}">Return terms</a>{% endif %}</p>{% endif %}</div>{% endif %}
 <div class="product-accordions"><details><summary>Product details</summary>{% if product.description != blank %}<div class="simple-description">{{ product.description }}</div>{% endif %}<p>{{ section.settings.details | escape }}</p></details><details><summary>Size & care</summary><p>{{ section.settings.care | escape }}</p><a href="{{ routes.root_url }}pages/size-care">See the full guide</a></details><details><summary>Delivery & returns</summary><p>Shipping services, rates and taxes are confirmed at checkout. See our store policies for return eligibility and instructions.</p><a href="{{ routes.root_url }}pages/help">Get help with an order</a></details></div>
-{% for block in section.blocks %}{% render block %}{% endfor %}
+{% if section.blocks.size > 0 %}<div class="product-app-content" id="ProductReviews-{{ section.id }}">{% for block in section.blocks %}{% render block %}{% endfor %}</div>{% endif %}
 </div></section>
 {% if product.media.size > 1 %}<div class="gallery-details simple-extra-media section-pad">{% for media in product.media offset: 1 %}<div>{% if media.media_type == 'image' %}{{ media | image_url: width: 900 | image_tag: loading: 'lazy', widths: '480,900', sizes: '(max-width: 760px) 85vw, 25vw' }}{% elsif media.media_type == 'video' %}{{ media | video_tag: controls: true, preload: 'metadata', image_size: '900x' }}{% endif %}</div>{% endfor %}</div>{% endif %}
 <script type="application/ld+json">{{ product | structured_data }}</script>
 {% else %}
 <section class="simple-empty section-pad"><span class="eyebrow">LIMITED-RUN SOCKS</span><h1>One good pair.<br>Your everyday.</h1><p>Our next drop is on its way.</p><a class="button navy" href="{{ routes.all_products_collection_url }}">Explore the socks {% render 'arrow' %}</a></section>
 {% endif %}
-{% schema %}{"name":"Product","settings":[{"type":"textarea","id":"fit_note","label":"Fit note — confirm before launch","default":"Shoe-size range is awaiting wearer testing. Please compare measurements before ordering."},{"type":"textarea","id":"details","label":"Construction details","default":"168-needle jacquard knit with a hand-linked seamless toe. Reinforced solid navy heels and smoke-blue toes. Pattern knit into the fabric."},{"type":"textarea","id":"care","label":"Materials and care — confirm before launch","default":"Follow your garment label. Final fiber percentages and washing instructions must be confirmed with the factory before launch."}],"blocks":[{"type":"@app"}]}{% endschema %}
+{% schema %}{
+  "name": "Product",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "summary",
+      "label": "Short product promise",
+      "default": "Cloud-inspired crew socks. Soft combed cotton. A seamless toe.",
+      "info": "Keep to one or two sentences. Test one copy change at a time."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show real review rating",
+      "default": true,
+      "info": "Only appears when a review app populates the standard Shopify rating and rating_count metafields."
+    },
+    {
+      "type": "text",
+      "id": "shipping_note",
+      "label": "Confirmed shipping summary",
+      "info": "Optional. Enter only an actual configured rate or delivery promise; leave blank until confirmed."
+    },
+    {
+      "type": "text",
+      "id": "returns_note",
+      "label": "Confirmed returns summary",
+      "info": "Optional. Must match your published refund policy, including eligibility."
+    },
+    {
+      "type": "textarea",
+      "id": "fit_note",
+      "label": "Fit note \u2014 confirm before launch",
+      "default": "Shoe-size range is awaiting wearer testing. Please compare measurements before ordering."
+    },
+    {
+      "type": "textarea",
+      "id": "details",
+      "label": "Construction details",
+      "default": "168-needle jacquard knit with a hand-linked seamless toe. Reinforced solid navy heels and smoke-blue toes. Pattern knit into the fabric."
+    },
+    {
+      "type": "textarea",
+      "id": "care",
+      "label": "Materials and care \u2014 confirm before launch",
+      "default": "Follow your garment label. Final fiber percentages and washing instructions must be confirmed with the factory before launch."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}
