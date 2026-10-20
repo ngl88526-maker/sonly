@@ -1,4 +1,4 @@
-// Render a silent product-motion ad using the supplied logo and sock artwork.
+// Render a restrained silent ad from the original supplied product mockup.
 // Requires Node, Playwright Chromium and FFmpeg. No generative-video account needed.
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
@@ -9,7 +9,7 @@ const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright')
 const directory = dirname(fileURLToPath(import.meta.url));
 const root = resolve(directory, '../..');
 const logo = 'data:image/webp;base64,' + readFileSync(resolve(root, 'shopify-theme/assets/sock-only-logo.webp')).toString('base64');
-const socks = 'data:image/webp;base64,' + readFileSync(resolve(root, 'shopify-theme/assets/mystic-cutout-1200.webp')).toString('base64');
+const socks = 'data:image/jpeg;base64,' + readFileSync(resolve(directory, 'reference-product.jpg')).toString('base64');
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium', args: ['--no-sandbox'] });
 const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
 await page.setContent('<!doctype html><html><head><style>*{margin:0}body{overflow:hidden}canvas{display:block}</style></head><body><canvas width="1080" height="1920"></canvas></body></html>');
@@ -19,30 +19,23 @@ await page.evaluate(async ({ logo, socks }) => {
   window.renderAd = time => {
     const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext('2d');
-    const ink = '#111110', blue = '#1675ad';
-    ctx.fillStyle = '#fffefa'; ctx.fillRect(0, 0, 1080, 1920);
-    const gradient = ctx.createRadialGradient(540, 950, 80, 540, 950, 650);
-    gradient.addColorStop(0, '#dff2ff'); gradient.addColorStop(1, '#b9dffa');
-    ctx.fillStyle = gradient; ctx.beginPath(); ctx.ellipse(540, 965, 455, 470, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.drawImage(window.art.logo, 80, 230, 250, 149);
-    ctx.fillStyle = ink; ctx.textAlign = 'right'; ctx.font = 'bold 22px Arial'; ctx.fillText('THEMED SOCKS. SMALL RUNS.', 990, 303);
-    ctx.textAlign = 'center';
-    const first = time < 3.3, last = time >= 7;
-    const title = first ? ['BORING SOCKS?', 'NOT TODAY.'] : last ? ['GOOD SOCKS.', 'GREAT ENERGY.'] : ['MYSTIC CLOUDS.', 'BIG PERSONALITY.'];
-    const ease = Math.min(1, Math.max(0, (time - (first ? 0 : last ? 7 : 3.3)) / .3));
-    ctx.save(); ctx.globalAlpha = .45 + .55 * ease; ctx.translate(0, 15 * (1-ease));
-    ctx.fillStyle = ink; ctx.font = '900 86px Arial'; ctx.fillText(title[0], 540, 435);
-    ctx.fillStyle = blue; ctx.font = '900 88px Arial'; ctx.fillText(title[1], 540, 535); ctx.restore();
-    const bob = Math.sin(time * 1.3) * 16;
-    const size = 760 + Math.sin(time * .7) * 22;
-    ctx.save(); ctx.translate(540, 960 + bob); ctx.rotate((-5 + 2 * Math.sin(time * .8)) * Math.PI / 180);
-    ctx.shadowColor = '#203c4f22'; ctx.shadowBlur = 35; ctx.shadowOffsetY = 20;
-    ctx.drawImage(window.art.socks, -size/2, -size/2, size, size); ctx.restore();
-    ctx.fillStyle = ink; ctx.font = 'bold 40px Arial'; ctx.fillText('Mystic Clouds', 540, 1370);
-    ctx.font = '26px Arial'; ctx.fillText('Limited-run crew socks', 540, 1415);
-    ctx.fillStyle = ink; ctx.beginPath(); ctx.roundRect(210, 1460, 660, 98, 49); ctx.fill();
-    ctx.fillStyle = '#fffefa'; ctx.font = 'bold 39px Arial'; ctx.fillText(last ? 'Shop now' : 'Meet your next pair', 540, 1523);
-    ctx.fillStyle = ink; ctx.font = 'bold 29px Arial'; ctx.fillText('sockonly.com', 540, 1615);
+    const ink = '#181818';
+    ctx.fillStyle = '#faf9f7'; ctx.fillRect(0, 0, 1080, 1920);
+    // A fixed brand header, no rotating copy or artificial product motion.
+    ctx.drawImage(window.art.logo, 80, 205, 200, 119);
+    ctx.fillStyle = ink; ctx.textAlign = 'left'; ctx.font = '400 56px Arial';
+    ctx.fillText('Meet Mystic Clouds.', 80, 411);
+    // Keep the original mockup intact. A 1.5% push is clipped to its square panel.
+    const x = 80, y = 462, width = 920;
+    const scale = 1 + .015 * Math.max(0, Math.min(1, time / 10));
+    const size = width * scale;
+    ctx.save(); ctx.beginPath(); ctx.rect(x, y, width, width); ctx.clip();
+    ctx.drawImage(window.art.socks, x - (size-width)/2, y - (size-width)/2, size, size);
+    ctx.restore();
+    ctx.fillStyle = ink; ctx.font = '400 29px Arial';
+    ctx.fillText('Limited-run crew socks.', 80, 1450);
+    ctx.font = '400 27px Arial'; ctx.fillText('sockonly.com', 80, 1514);
+
   };
 }, { logo, socks });
 const target = resolve(directory, 'sockonly-reels-1080x1920.mp4');
@@ -60,4 +53,4 @@ encoder.stdin.end();
 const [code] = await once(encoder, 'close');
 await browser.close();
 if (code !== 0) throw new Error('FFmpeg encoding failed');
-console.log('Created 10-second 1080×1920 H.264 product-motion ad, 24 fps, silent.');
+console.log('Created clean 10-second 1080×1920 ad: original product mockup, 1.5% camera push, fixed type, silent.');
